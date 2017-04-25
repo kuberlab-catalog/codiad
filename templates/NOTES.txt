@@ -1,0 +1,2 @@
+Codiad can be accessed via ports 80/443 on the following DNS name from within your cluster:
+{{ template "fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
