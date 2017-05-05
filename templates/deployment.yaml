@@ -37,12 +37,22 @@ spec:
           initialDelaySeconds: 5
           timeoutSeconds: 1
         volumeMounts:
+        # workspaces
         - mountPath: /code/workspace
           name: storage
-          subPath: codiad/workspace
+          subPath: {{ .Values.persistence.nfs.codiadPath }}/workspace
+        # data
         - mountPath: /code/data
           name: storage
-          subPath: codiad/data
+          subPath: {{ .Values.persistence.nfs.codiadPath }}/data
+        # themes
+        - mountPath: /code/themes
+          name: storage
+          subPath: {{ .Values.persistence.nfs.codiadPath }}/themes
+        # plugins
+        - mountPath: /code/plugins
+          name: storage
+          subPath: {{ .Values.persistence.nfs.codiadPath }}/plugins
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:

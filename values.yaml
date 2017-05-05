@@ -13,7 +13,7 @@ image: wernight/codiad:alpine
 ## Kubernetes configuration
 ## For minikube, set this to NodePort, elsewhere use LoadBalancer
 ##
-serviceType: LoadBalancer
+serviceType: ClusterIP
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -29,5 +29,6 @@ persistence:
   nfs:
     server: 10.0.0.0
     path: "/exports"
+    codiadPath: "codiad"
   accessMode: ReadWriteMany
   size: 16Gi
